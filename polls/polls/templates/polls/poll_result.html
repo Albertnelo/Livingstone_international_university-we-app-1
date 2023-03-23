@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-8 offset-sm-2">
+            {% if poll.active %}
+            <h3 class="mt-3 mb-3 text-center">Result for: {{ poll.text }}</h3>
+            {% else %}
+            <h3 class="mt-3 mb-3 text-center">Voting for {{ poll.text }} was Ended !</h3>
+            {% endif %}
+            <h3 class="mb-2 text-center">Total: {{ poll.get_vote_count }} Votes Registered</h3>
+            <!-- progress bar -->
+            <div class="progr">
+                {% for choice in poll.get_result_dict %} 
+                
+               {{choice.text|truncatewords:2}} : 
+               <div class="progress-bar bg-{{ choice.alert_class }}" role="progressbar"
+               style="width:{{choice.percentage|floatformat}}%;" aria-valuenow="30" aria-valuemin="0"
+                        aria-valuemax="100">
+                
+                 {{choice.percentage|floatformat}}% 
+                </div>
+
+
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" aria-label="Warning example" style="width: {{choice.percentage|floatformat}}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                {% endfor %}
+                Total: 100% for current Votes
+
+            </div>
+
+            <div class="container">
+                <h2 style="text-align: center;"><br><br>Tally Center<br>  </h2>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <b>  <br>  CANDIDATE
+                      <span ></b><h2 style="font-size: 12px;" class="mb-2 text-center"><b>Number of Votes</b> </h2>
+                      </span> 
+                  </li>
+                {% for choice in poll.choice_set.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ choice.choice_text }}
+                    <span class="badge badge-primary badge-pill">{{ choice.get_vote_count }}</span>
+                </li>
+                {% endfor %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <br>  Total
+                    <span class="badge badge-secondary badge-pill"><h3 style="font-size: 12px;" class="mb-2 text-center">Total: {{ poll.get_vote_count }} Votes </h3>
+                    </span>
+                </li>
+
+            </ul>
+            {% endif %}
+            <a class="btn btn-primary mt-3" href="{% url 'polls:list' %}" role="button">Back To Polls</a>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

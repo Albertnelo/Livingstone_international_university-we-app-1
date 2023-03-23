@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+<style>
+    body {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://brightnord.com/uploads/posts/2020-01/1580475809_azerbiajan-oil-and-industry-university-student.jpg');
+    }
+    .home-bg {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0.5;
+  position: absolute;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-black);
+}
+    h1 {
+        color: rgb(32, 51, 226);
+
+    }
+
+    .home-content {
+        margin-left: -500px;
+    }
+
+    .btn {
+        background-color: darkgreen;
+    }
+
+    .images1{
+        height: 10rem;
+        width: 10rem;
+        margin-top: -200px;
+        margin-left: 800px;
+    }
+    .nelo{
+        padding: 30px;
+    }
+   
+</style>
+{% endblock custom_css %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img class='nelo' src="/static/img/images1.png" alt="">
+            <div class="container">
+                <div id="home-content">
+                    <h1 style="color:blueviolet">LIU WEB VOTING APP</h1>
+                    <h3>Your Voice Matters!</h3>
+                    <h6>Your Vote, Your Voice!</h6>
+                    <hr>
+                    <a class="btn btn-danger btn-lg" href="{% url 'polls:list' %}" role="button">Get to the Ballot !</a>
+                </div>
+                <img class="images1" src="/static/img/pngfind.com-vote-png-333200 (1).png" alt="">
+            </div>
+
+        
+            <div class="container">
+                <div class="container">
+                    <div class="container">
+                        <div class="container">
+                            <div class="container">
+                                <div class="container">
+                                    <div class="container">
+                                        <div class="container">
+                                            <div class="container">
+                                                <div class="container">
+                                                    <div class="container">
+                                                        <div class="container">
+                                                            <div class="container">
+                                                                <div class="container">
+                                                                    <div class="container">
+                                                                        <div class="container">
+                                                                            <div class="container">
+                                                                                <div class="container">
+                                                                                    <div class="container">
+                                                                                        <div class="contain">
+                                                                                            <img src="/static/img/LivingStone_International_University_logo.png"
+                                                                                                alt="" srcset="">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock content %}
